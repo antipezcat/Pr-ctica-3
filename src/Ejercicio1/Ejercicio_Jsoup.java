@@ -7,55 +7,41 @@
 package Ejercicio1;
 
 import org.jsoup.Jsoup;
-import org.jsoup.helper.Validate;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.UnknownHostException;
 import java.util.Scanner;
-import java.net.URL;
-import java.util.EmptyStackException;
-import org.jsoup.safety.Whitelist;
 
 
 /**
  *
- * @author abollaita
+ * @author Dariana
  */
 public class Ejercicio_Jsoup {
-     public static void main(String[] args) throws IOException {
-      String url;
-      Scanner leer = new Scanner(System.in);
-      Document doc = doc = Jsoup.connect("https://www.google.com").get(); ;
+    public static void main(String[] args) throws IOException {
+    String url;
+    Scanner leer = new Scanner(System.in);
+    Document  doc = null;
      
-    // while(true) {
-        //try {
-
-       //  System.out.println("\nIntroduzca una Url valida,\nFormato aceptado-http://ejemplo.com : ");
-        // url = leer.nextLine();
-        // doc = Jsoup.connect(url).get(); 
-
-           // ...
-       //} catch (IllegalArgumentException e) {
-          // System.err.println("Url Invalido, formato no aceptado");
-       //}
-     //}
-     
-      
-     
-          System.out.println(doc.html());
-           
-           
-            
-           Elements parrafos = doc.select("p");
-           Elements imagenes = doc.select("img");
-           Elements formularios = doc.select("form");
-           Elements inputFormularios = doc.select("form input");
-            
-           
-          // System.out.println(inputFormularios.size());
+    try {
+        System.out.println("\nIntroduzca una Url valida,\nFormato aceptado-http://ejemplo.com : ");
+        url = leer.nextLine();
+        doc = Jsoup.connect(url).get(); 
+    } 
+    catch (Exception e) {
+          
+       }  
+    Elements lineas = doc.getAllElements();
+    Elements parrafos = doc.select("p");
+    Elements imagenes = doc.select("img");
+    Elements formularios = doc.select("form");
+    Elements inputFormularios = doc.select("form input");
+          
+    System.out.println("Número de lineas: " + lineas.size());
+    System.out.println("\nNúmero de parrafos: " +parrafos.size());
+    System.out.println("\nNúmero de imagenes: " +imagenes.size());
+    System.out.println("\nNúmero de formularios: " +formularios.size());
+    System.out.println("\nNúmero de inputs: " +inputFormularios.size());
             
     }
 }
